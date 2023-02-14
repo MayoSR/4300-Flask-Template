@@ -1,40 +1,61 @@
-version: '3.1'
+version: '3.8'
 services:
-    flask_app:
-        container_name: flask_app
+    frontend_app:
+        container_name: ${TEAM_NAME}_frontend_app
+        ports:
+                - ${FRONTEND_EXTERNAL_PORT}:${FRONTEND_INTERNAL_PORT}
+        expose:
+                - ${FRONTEND_EXTERNAL_PORT}
         restart: always
         build:
-                context: ./Docker
-                dockerfile: Dockerfile-Flask
+                context: ./Frontend
+                dockerfile: Dockerfile
+        networks:
+                flask_network:
+                        aliases:
+                                - flask-network
+        command: nginx -g 'daemon off;'
+    backend_flask_app:
+        container_name: ${TEAM_NAME}_backend_flask_app
+        ports:
+                - ${FLASK_EXTERNAL_PORT}:${FLASK_INTERNAL_PORT}
+        expose:
+                - ${FLASK_EXTERNAL_PORT}
+        restart: always
+        build:
+                context: ./Backend
+                dockerfile: Dockerfile
         depends_on:
                 - db
         environment:
-                - FLASK_APP=app.py
+                - FLASK_APP=${APP_ROOT}.py
                 - FLASK_RUN_HOST=0.0.0.0
                 - FLASK_DEBUG=0
         networks:
                 flask_network:
                         aliases:
                                 - flask-network
-        command: bash -c 'flask create_db && gunicorn --bind 0.0.0.0:8000 --workers 4 "app:app"'
+        command: gunicorn --bind 0.0.0.0:${FLASK_INTERNAL_PORT} --workers 4 "${APP_ROOT}:${APP_ROOT}"
     db:
-        image: mysql:5.7
+        image: mariadb:10.5.8
         restart: always
-        container_name: flask_db
+        container_name: ${TEAM_NAME}_flask_db
         ports:
-                - "3306:3306"
+                - ${MYSQL_EXTERNAL_PORT}:${MYSQL_INTERNAL_PORT}
         expose:
-                - "3306"
+                - ${MYSQL_EXTERNAL_PORT}
         environment:
-                - MYSQL_USER=admin
-                - MYSQL_PASSWORD=admin
-                - MYSQL_DATABASE=flask_api
-                - MYSQL_ROOT_PASSWORD=admin
+                - MYSQL_USER=${MYSQL_USER}
+                - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+                - MYSQL_DATABASE=${MYSQL_DATABASE}
+                - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         volumes:
                 - flask_volume:/var/lib/mysql
+                - ./init.sql:/docker-entrypoint-initdb.d/init.sql
         networks:
                 - flask_network
 volumes:
         flask_volume:
 networks:
         flask_network:
+                name: ${TEAM_NAME}_flask_network
