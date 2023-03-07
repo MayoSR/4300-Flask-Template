@@ -1,18 +1,27 @@
 # 4300-Flask-Template
 
+## Contents
+
+- [Summary](#summary)
+- [Authentication and Login](#authentication-and-login)
+- [Working with the template](#working-with-the-template)
+- [Tutorial](#tutorial)
+- [Debugging Some Basic Errors](#debugging-some-basic-errors)
+- [General comments from the author](#general-comments-from-the-author)
+
 ## Summary
 
 This is a template for **Professor Cristian Danescu-Niculescu-Mizil's CS/INFO 4300 class at Cornell University.**
 
 You will use this template to directly add your Flask code, whose deployment you can control from http://4300showcase.infosci.cornell.edu:9090/#/login. 
 
-# Authentication and Login
+## Authentication and Login
 
 To access the dashboard above, you will need an account and password to sign in, which if you're part of the course has already been created for you. These accounts will later be suspended once you are allocated your teams, and new accounts will be provided.
 
 Your current password is your **Net ID**. The application uses JWT to track your status and activity, so clearing localStorage could cause issues, in which case you will have to login again.
 
-# Working with the template
+## Working with the template
 
 You can clone a copy of this repository directly and use it, or you can use the create template option that has been provided to you. Either way, you can put the repository anywhere with the constraint that it has to be **PUBLIC**. 
 
@@ -28,7 +37,7 @@ You can run the code more easily offline by just creating a Python3.7 virtual en
 
 Ideally, once you form teams, at least one person on the team can run Docker on their laptop just for quick testing and development, however with the provided service this should not be required.
 
-# Tutorial
+## Tutorial
 
 ### Step 1: Login and basic setup
 
@@ -68,7 +77,13 @@ Ideally, once you form teams, at least one person on the team can run Docker on 
 - Create a new table (either using SQLalchemy from within flask or from the init.sql file)
 - Connect to the DB from Flask and return the data 
 
-# General comments from the author 
+## Debugging some basic errors
+- Sometimes, if a deployment doesn't work, you can try logging out and back in to see if it works
+- Alternatively, checking the console will tell you what error it is. If it's a 401, then logging in and out should fix it. 
+- If it isn't a 401, first try checking the logs or container status. Check if the containers are alive or not, which could cause issues. If the containers are down, try stopping and starting them. If that does not work, you can report it on ED.
+- If data isn't important, destroying and then cloning and re-building containers will usually fix the issue (assuming there's no logical error)
+
+## General comments from the author
 ### Mayank/ms3293/ms3293@cornell.edu
 
 - Since this project was made in the span of a few weeks, it is very likely things will break from time to time. If things do break, you can email me at the above email, although please do not email if you aren't sure if it's an actual bug or not. In those cases, post to ED first.
