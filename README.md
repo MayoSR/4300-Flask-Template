@@ -6,7 +6,7 @@ This is a template for **Professor Cristian Danescu-Niculescu-Mizil's CS/INFO 43
 
 You will use this template to directly add your Flask code, whose deployment you can control from http://4300showcase.infosci.cornell.edu:9090/#/login. 
 
-## Authentication and Login
+# Authentication and Login
 
 To access the dashboard above, you will need an account and password to sign in, which if you're part of the course has already been created for you. These accounts will later be suspended once you are allocated your teams, and new accounts will be provided.
 
@@ -68,7 +68,9 @@ Ideally, once you form teams, at least one person on the team can run Docker on 
 - Create a new table (either using SQLalchemy from within flask or from the init.sql file)
 - Connect to the DB from Flask and return the data 
 
-# General comments from the author (Mayank/ms3293/ms3293@cornell.edu)
+# General comments from the author 
+### Mayank/ms3293/ms3293@cornell.edu
+
 - Since this project was made in the span of a few weeks, it is very likely things will break from time to time. If things do break, you can email me at the above email, although please do not email if you aren't sure if it's an actual bug or not. In those cases, post to ED first.
 - If you would like to see stuff added to the dashboard you can send me an email at the above email and prefix the title with FEATURE REQUEST
 - If you REALLY want to go above and beyond, you can make a request for a special Docker template. These will likely be turned down unless the project is exceptional, and you will have to be able to debug it yourself to ensure it works.
