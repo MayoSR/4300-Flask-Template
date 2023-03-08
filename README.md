@@ -11,7 +11,7 @@
 
 ## Summary
 
-This is a template for **Professor Cristian Danescu-Niculescu-Mizil's CS/INFO 4300 class at Cornell University.**
+This is a template for **"CS/INFO 4300 class at Cornell University"**
 
 You will use this template to directly add your Flask code, whose deployment you can control from http://4300showcase.infosci.cornell.edu:9090/#/login. 
 
@@ -58,20 +58,20 @@ Ideally, once you form teams, at least one person on the team can run Docker on 
 - **Container Information Table**: Will show you the status of all your containers. This should tell you if they are on/off. Generally this information is just useful for debugging and for checking any port errors or mismatches, although mostly just useful for TAs
 - **Logs**: Should give you an idea of what went wrong during deployment. This of course will not tell you if something is broken during build time, but only what happened when your code was deployed. 
 
-### Step 2: Cloning repo and API creation
+### Step 3: Cloning repo and API creation
 
 - Leave the dashboard for a bit and clone the template from https://github.com/MayoSR/4300-Flask-Template as you see fit, and make your repo public
 - In the backend folder, modify the app.py file to return "Hello, <your name/net_id>"
 - Push the changes
 
-### Step 3: Test deployment
+### Step 4: Test deployment
 
 - Back at the dashboard, in the provided search bar, add the URL of your template from your repository
 - Click the **clone** button and wait for a bit, about a minute at most (As of now, there's no indication that deployment has succeeded, but that will be added soon)
 - Click **build**, and wait for a minute. If all goes successfully, hitting the refresh button on the Container Information table and the logs tab will show the created data from the service. If this doesn't work, logout and log back in.
 - Your URL should now work and display "Hello, <your name/net_id>"
 
-### Step 4: Experiment a bit (optional)
+### Step 5: Experiment a bit (optional)
 - Create a new API that will fetch data from the DB
 - Create a new database using the init.sql file
 - Create a new table (either using SQLalchemy from within flask or from the init.sql file)
@@ -84,10 +84,10 @@ Ideally, once you form teams, at least one person on the team can run Docker on 
 - If data isn't important, destroying and then cloning and re-building containers will usually fix the issue (assuming there's no logical error)
 
 ## General comments from the author
-### Mayank/ms3293/ms3293@cornell.edu
+### Mayank/ms3293
 
-- Since this project was made in the span of a few weeks, it is very likely things will break from time to time. If things do break, you can email me at the above email, although please do not email if you aren't sure if it's an actual bug or not. In those cases, post to ED first.
-- If you would like to see stuff added to the dashboard you can send me an email at the above email and prefix the title with FEATURE REQUEST
-- If you REALLY want to go above and beyond, you can make a request for a special Docker template. These will likely be turned down unless the project is exceptional, and you will have to be able to debug it yourself to ensure it works.
+- Since this project was made in the span of a few weeks, it is very likely things will break from time to time. If things do break, you can send an email through the course email or post to ED first.
+- If you would like to see stuff added to the dashboard you can send an email thorugh the course email and prefix the title with FEATURE REQUEST
+- If you REALLY want to go above and beyond, you can make a request for a special Docker template. These will likely be turned down unless there is an exceptional reason to do so, and you will have to be able to debug it yourself to ensure it works.
 - You can ask for allocation of extra port numbers which will be approved or denied on a case by case basis.
 - You can also email regarding any questions relating to the service itself. If you think things can be improved or some better logic can be implemented for certain portions, or even just want to know more about the project then feel free to do so.
