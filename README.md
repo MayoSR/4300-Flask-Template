@@ -29,7 +29,20 @@ You will not be able to run this directly, unless you have **Docker**.
 
 ### Running locally (Flask/Gunicorn only)
 
-You can run the code more easily offline by just creating a Python3.7 virtual enviornment, and running it 
+You can run the code more easily offline by just creating a Python3.7 virtual enviornment. (You can Google these steps quite easily)
+- From there, activate the environment
+- Install the files from requirements.txt
+- Change the MySQL database URL to match your database credentials
+- Import the data into MySQL:
+  - Using init.sql DB file
+  - Manually create the data required
+  - Create the database through Flask
+
+Once done with all this, you can run it using:
+
+```
+flask run --host=0.0.0.0 --port=5000
+```
 
 ### Running locally with Docker (Not recommended)
 
@@ -67,7 +80,7 @@ Ideally, once you form teams, at least one person on the team can run Docker on 
 ### Step 4: Test deployment
 
 - Back at the dashboard, in the provided search bar, add the URL of your template from your repository
-- Click the **clone** button and wait for a bit, about a minute at most (As of now, there's no indication that deployment has succeeded, but that will be added soon)
+- Click the **clone** button and wait for a bit till you get a confirmation
 - Click **build**, and wait for a minute. If all goes successfully, hitting the refresh button on the Container Information table and the logs tab will show the created data from the service. If this doesn't work, logout and log back in.
 - Your URL should now work and display "Hello, <your name/net_id>"
 
@@ -77,11 +90,14 @@ Ideally, once you form teams, at least one person on the team can run Docker on 
 - Create a new table (either using SQLalchemy from within flask or from the init.sql file)
 - Connect to the DB from Flask and return the data 
 
-## Debugging some basic errors
+## Causes for errors and fixes
+- **Containers will turn off midnight at 00:00 hours (12am)**
+- **Do not change the Dockerfiles without permission**
 - Sometimes, if a deployment doesn't work, you can try logging out and back in to see if it works
 - Alternatively, checking the console will tell you what error it is. If it's a 401, then logging in and out should fix it. 
 - If it isn't a 401, first try checking the logs or container status. Check if the containers are alive or not, which could cause issues. If the containers are down, try stopping and starting them. If that does not work, you can report it on ED.
 - If data isn't important, destroying and then cloning and re-building containers will usually fix the issue (assuming there's no logical error)
+
 
 ## General comments from the author
 ### Mayank/ms3293
